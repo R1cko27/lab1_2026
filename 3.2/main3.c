@@ -3,7 +3,8 @@
 #include <stdio.h>
 
 // Тестирующая функция для работы с множествами
-//      gcc main3.c my_list.c study_group.c set_list.c -o main3
+// gcc -I1 -I4 3.2/main3.c 1/study_group.c 2/my_list.c -o main3
+
 int main() {
     printf("\n--- Тестирование множества set()\n\n");
     

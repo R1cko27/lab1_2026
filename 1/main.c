@@ -1,7 +1,7 @@
 #include "study_group.h"
 
 // Тестирующая функция
-//     gcc main.c my_list.c study_group.c -o main
+// gcc -I1 -I4 1/main.c 2/my_list.c 1/study_group.c -o main
 int main() {
     
     StudyGroup group1, group2, group3;

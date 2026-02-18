@@ -1,9 +1,9 @@
 #include "study_group.h"
 #include "my_list.h"
 
-//      gcc main2.c my_list.c study_group.c -o main2
+//  gcc -I1 -I4 2/main2.c 2/my_list.c 1/study_group.c -o main2
 int main() {
-    printf("\n--- Тестирование односвязного спикс ---\n\n");
+    printf("\n--- Тестирование односвязного спика ---\n\n");
     
     Node* head = NULL;
     ErrorCode err;

@@ -35,10 +35,9 @@ QueueNode* enqueue(QueueNode* tail, const StudyGroup* group) {
     
     // Если очередь пуста
     if (tail == NULL) {
-        // Единственный элемент указывает сам на себя
         new_node->next = new_node;
         new_node->prev = new_node;
-        return new_node;  // tail указывает на новый элемент
+        return new_node;
     }
     
     // Вставка в конец очереди (после tail)
