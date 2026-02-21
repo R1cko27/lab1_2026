@@ -10,11 +10,15 @@ typedef struct QueueNode {
     struct QueueNode* prev;    // Указатель на предыдущий элемент
 } QueueNode;
 
-// Прототипы функций
+// Функция добавления элемента в конец очереди
 QueueNode* enqueue(QueueNode* tail, const StudyGroup* group);
+// Функция удаления элемента из начала очереди
 QueueNode* dequeue(QueueNode* tail, StudyGroup* result);
+// Функция удаления всей очереди
 QueueNode* delete_queue(QueueNode* tail);
+// Функция печати всех элементов очереди
 void print_queue(const QueueNode* tail);
+// Функция проверки на пустоту
 int is_queue_empty(const QueueNode* tail);
 
 #endif

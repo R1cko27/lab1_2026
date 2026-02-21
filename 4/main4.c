@@ -2,7 +2,7 @@
 #include "my_queue.h"
 #include <stdio.h>
 
-// gcc -I1 -I4 4/main4.c 1/study_group.c 4/my_queue.c -o main4
+// gcc -I1 -I4 4/main4.c 4/my_queue.c 1/study_group.c -o main4
 // Тестирующая функция для очереди
 int main() {
     printf("\n--- Тестирование очереди на базе двухсвязного списка ---\n\n");
@@ -10,7 +10,6 @@ int main() {
     QueueNode* queue = NULL;
     ErrorCode err;
     
-    // Создаём группы для тестирования
     StudyGroup groups[5];
     
     // Инициализация групп

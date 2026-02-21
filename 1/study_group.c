@@ -8,7 +8,7 @@ int is_valid_group_name_pattern(const char* name) {
     if (name == NULL) return 0;
     
     int len = strlen(name);
-    if (len < 5) return 0; // Минимум: 1 буква + дефис + 3 цифры
+    if (len < 5) return 0;
     
     // Поиск дефиса
     const char* hyphen = strchr(name, '-');
@@ -20,7 +20,6 @@ int is_valid_group_name_pattern(const char* name) {
     
     // Проверяем, что все символы до дефиса - буквы
     for (int i = 0; i < prefix_len; i++) {
-        // Проверка на букву
         if (!((name[i] >= 'A' && name[i] <= 'Z') || 
               (name[i] >= 'a' && name[i] <= 'z') ||
               (name[i] >= -64 && name[i] <= -17) || 
@@ -155,7 +154,7 @@ int are_study_groups_equal(const StudyGroup* group1, const StudyGroup* group2) {
     return 1; // Все поля совпадают
 }
 
-// Сравнение двух групп (меньше)
+// Сравнение двух групп
 int is_study_group_less(const StudyGroup* group1, const StudyGroup* group2) {
     if (group1 == NULL || group2 == NULL) {
         return 0;
@@ -176,6 +175,6 @@ int is_study_group_less(const StudyGroup* group1, const StudyGroup* group2) {
         return group1->enrollment_year < group2->enrollment_year;
     }
     
-    // Приоритет 4: Название группы (лексикографически)
+    // Приоритет 4: Название группы
     return strcmp(group1->group_name, group2->group_name) < 0;
 }

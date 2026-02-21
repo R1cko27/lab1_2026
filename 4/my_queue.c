@@ -10,8 +10,6 @@ static QueueNode* create_node(const StudyGroup* group) {
         printf("Ошибка выделения памяти для узла очереди\n");
         return NULL;
     }
-    
-    // Копируем данные (по значению)
     new_node->data = *group;
     new_node->next = NULL;
     new_node->prev = NULL;
@@ -21,7 +19,6 @@ static QueueNode* create_node(const StudyGroup* group) {
 
 // 1) Функция добавления элемента в конец очереди
 QueueNode* enqueue(QueueNode* tail, const StudyGroup* group) {
-    // Проверка корректности группы
     ErrorCode err = validate_study_group(group);
     if (err != SUCCESS) {
         printf("Ошибка: группа некорректна (код ошибки %d)\n", err);
@@ -40,10 +37,9 @@ QueueNode* enqueue(QueueNode* tail, const StudyGroup* group) {
         return new_node;
     }
     
-    // Вставка в конец очереди (после tail)
-    QueueNode* head = tail->next;  // Первый элемент очереди
+    // Вставка в конец очереди
+    QueueNode* head = tail->next;
     
-    // Связываем новый элемент
     new_node->next = head;
     new_node->prev = tail;
     
@@ -51,7 +47,6 @@ QueueNode* enqueue(QueueNode* tail, const StudyGroup* group) {
     head->prev = new_node;
     tail->next = new_node;
     
-    // Новый элемент становится хвостом
     return new_node;
 }
 
@@ -65,11 +60,10 @@ QueueNode* dequeue(QueueNode* tail, StudyGroup* result) {
     // Голова очереди - следующий за хвостом элемент
     QueueNode* head = tail->next;
     
-    // Сохраняем данные для возврата
     if (result != NULL) {
         *result = head->data;
     }
-    
+
     printf("Извлечён элемент: ");
     print_study_group(&head->data);
     
@@ -94,7 +88,7 @@ QueueNode* delete_queue(QueueNode* tail) {
         return NULL;
     }
     
-    QueueNode* current = tail->next;  // Начинаем с головы
+    QueueNode* current = tail->next;
     QueueNode* head = current;
     int count = 0;
     
@@ -106,7 +100,7 @@ QueueNode* delete_queue(QueueNode* tail) {
         count++;
     }
     
-    // Удаляем последний элемент (tail)
+    // Удаляем последний элемент
     free(tail);
     count++;
     
@@ -121,7 +115,7 @@ void print_queue(const QueueNode* tail) {
         return;
     }
     
-    const QueueNode* current = tail->next;  // Начинаем с головы
+    const QueueNode* current = tail->next;
     const QueueNode* head = current;
     int position = 1;
     

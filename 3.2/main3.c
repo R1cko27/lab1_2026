@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 // Тестирующая функция для работы с множествами
-// gcc -I1 -I4 3.2/main3.c 1/study_group.c 2/my_list.c -o main3
+// gcc -I1 -I4 3.2/main3.c 3.2/set_list.c 1/study_group.c -o main3
 
 int main() {
     printf("\n--- Тестирование множества set()\n\n");
@@ -12,7 +12,6 @@ int main() {
     SetNode* set2 = NULL;
     ErrorCode err;
     
-    // Создаём группы для тестирования
     StudyGroup groups[8];
     
     // Инициализация групп

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-// Вспомогательная функция для создания нового узла с копией данных
+// Функция для создания нового узла с копией данных
 static SetNode* create_node(const StudyGroup* group) {
     // Выделяем память под узел
     SetNode* new_node = (SetNode*)malloc(sizeof(SetNode));
@@ -79,14 +79,10 @@ ErrorCode set_insert(SetNode** head, const StudyGroup* group) {
     if (head == NULL || group == NULL) {
         return ERR_GROUP_NAME;
     }
-    
-    // Проверка корректности группы
     ErrorCode err = validate_study_group(group);
     if (err != SUCCESS) {
         return err;
     }
-    
-    // Вставляем с сохранением порядка
     return insert_ordered(head, group);
 }
 
@@ -114,8 +110,8 @@ ErrorCode set_remove(SetNode** head, const char* group_name) {
             }
             
             printf("Удалена группа: %s\n", group_name);
-            free(current->data);  // Освобождаем память данных
-            free(current);        // Освобождаем память узла
+            free(current->data);
+            free(current);
             return SUCCESS;
         }
         
@@ -133,12 +129,12 @@ int set_contains(const SetNode* head, const char* group_name) {
     
     while (current != NULL) {
         if (strcmp(current->data->group_name, group_name) == 0) {
-            return 1;  // Найдено
+            return 1;
         }
         current = current->next;
     }
     
-    return 0;  // Не найдено
+    return 0;
 }
 
 // 4) Объединение множеств
@@ -152,7 +148,7 @@ SetNode* set_union(const SetNode* set1, const SetNode* set2) {
         current = current->next;
     }
     
-    // Добавляем элементы из второго множества (дубликаты не добавятся)
+    // Добавляем элементы из второго множества
     current = set2;
     while (current != NULL) {
         set_insert(&result, current->data);
@@ -166,7 +162,6 @@ SetNode* set_union(const SetNode* set1, const SetNode* set2) {
 SetNode* set_intersection(const SetNode* set1, const SetNode* set2) {
     SetNode* result = NULL;
     
-    // Для каждого элемента из первого множества проверяем, есть ли он во втором
     const SetNode* current = set1;
     while (current != NULL) {
         if (set_contains(set2, current->data->group_name)) {
@@ -205,8 +200,8 @@ void delete_set(SetNode* head) {
         SetNode* temp = current;
         current = current->next;
         
-        free(temp->data);  // Освобождаем память данных
-        free(temp);        // Освобождаем память узла
+        free(temp->data);
+        free(temp);
         count++;
     }
     
